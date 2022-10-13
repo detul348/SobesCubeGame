@@ -27,10 +27,6 @@ public class Cubes : MonoBehaviour
    // когда происходит набор текста проверяем его
    public void ValueChangeCheck(string text)
    {
-      if(Input.GetKey(KeyCode.Space))
-      {
-         mainInputField.text = String.Empty;
-      }
       switch (_tables)
       {
          case Tables.Distance:
