@@ -1,46 +1,51 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class Cubes : MonoBehaviour
 {
-   private string SpeedText;
-   private string DistanceText;
-   private string TimeForAppearenceText;
-   public int Speed;
-   public int Distance;
-   public int Time;
-   public InputField mainInputField;
-   public enum Tables
-   {
-      Speed, Distance, TimeForAppearence
-   }
+    [field: SerializeField] public int Speed { get; private set; }
+    [field: SerializeField] public int Distance { get; private set };
+    [field: SerializeField] public int Time { get; private set };
 
-   public Tables _tables;
-   public void Start()
-   {
-      //добавляем слушателя
-      mainInputField.onValueChange.AddListener (delegate {ValueChangeCheck (mainInputField.text);});
-   }
+    private string _speedText;
+    private string _distanceText;
+    private string _timeForAppearenceText;
 
-   // когда происходит набор текста проверяем его
-   public void ValueChangeCheck(string text)
-   {
-      switch (_tables)
-      {
-         case Tables.Distance:
-            DistanceText = mainInputField.text;
-            Distance = Int32.Parse(DistanceText);
-            break;
-         case Tables.Speed:
-            SpeedText = mainInputField.text;
-            Speed = Int32.Parse(SpeedText);
-            break;
-         case Tables.TimeForAppearence:
-            TimeForAppearenceText = mainInputField.text;
-            Time = Int32.Parse(TimeForAppearenceText);
-            break;
-      }
-   }
+    public InputField mainInputField;
+
+    public enum Tables
+    {
+        Speed,
+        Distance,
+        TimeForAppearence
+    }
+
+    public Tables _tables;
+
+    private void Start()
+    {
+        //добавляем слушателя
+        mainInputField.onValueChange.AddListener(delegate { ValueChangeCheck(mainInputField.text); });
+    }
+
+    // когда происходит набор текста проверяем его
+    private void ValueChangeCheck(string text)
+    {
+        switch (_tables)
+        {
+            case Tables.Distance:
+                _distanceText = mainInputField.text;
+                Distance = Int32.Parse(_distanceText);
+                break;
+            case Tables.Speed:
+                _speedText = mainInputField.text;
+                Speed = Int32.Parse(_speedText);
+                break;
+            case Tables.TimeForAppearence:
+                _timeForAppearenceText = mainInputField.text;
+                Time = Int32.Parse(_timeForAppearenceText);
+                break;
+        }
+    }
 }

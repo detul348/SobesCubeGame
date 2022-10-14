@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     public GameObject cube;
     private Cubes _cubesTime;
     private float timer;
+
     private void Start()
     {
         _cubesTime = GameObject.Find("TimeForAppearance").GetComponent<Cubes>();
