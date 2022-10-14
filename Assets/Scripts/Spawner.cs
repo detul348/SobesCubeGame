@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     public GameObject cube;
     private Cubes _cubesTime;
-    private float timer;
+    private float _timer;
 
     private void Start()
     {
@@ -16,11 +14,9 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= _cubesTime.Time)
-        {
-            Instantiate(cube, transform.position, transform.rotation);
-            timer = 0;
-        }
+        _timer += Time.deltaTime;
+        if (!(_timer >= _cubesTime.Time)) return;
+        Instantiate(cube, transform.position, transform.rotation);
+        _timer = 0;
     }
 }

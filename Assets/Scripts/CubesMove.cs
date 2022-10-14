@@ -1,6 +1,4 @@
 using UnityEngine;
-
-
 public class CubesMove : MonoBehaviour
 {
     private Cubes _cubesSpeed;
@@ -12,7 +10,7 @@ public class CubesMove : MonoBehaviour
         _cubesDistance = GameObject.Find("Distance").GetComponent<Cubes>();
     }
 
-    void Move()
+    private void Move()
     {
         transform.Translate(Vector3.forward * _cubesSpeed.Speed);
     }
